@@ -1,1 +1,7 @@
-package Golang_Testing
+package main
+
+import "log"
+
+func main () {
+	log.Printf("We are good")
+}
