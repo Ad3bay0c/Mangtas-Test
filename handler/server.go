@@ -1,4 +1,4 @@
-package server
+package handler
 
 import (
 	"github.com/gin-gonic/gin"
@@ -17,13 +17,13 @@ func (s *Server) GetMostUsedWords(c *gin.Context) {
 	}{}
 	if err := c.ShouldBindJSON(text); err != nil {
 		c.JSON(400, gin.H{"error": err.Error()})
-        return
+		return
 	}
 	if strings.TrimSpace(text.Text) == "" {
-        c.JSON(400, gin.H{"error": "text is empty"})
-        return
-    }
+		c.JSON(400, gin.H{"error": "text is empty"})
+		return
+	}
 	c.JSON(200, gin.H{
-        "message": text.Text,
-    })
+		"message": text.Text,
+	})
 }
