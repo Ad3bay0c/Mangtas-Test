@@ -11,18 +11,15 @@ const PORT = ":8080"
 
 func main() {
 	router := gin.Default()
-	setUpRouter(router)
+	s := handler.NewServer()
+	s.SetUpRouter(router)
 
-	s := &http.Server{
+	server := &http.Server{
 		Handler: router,
 		Addr:    PORT,
 	}
 	log.Printf("Server started at http://localhost%v", PORT)
-	log.Fatal(s.ListenAndServe())
+	log.Fatal(server.ListenAndServe())
 }
 
-func setUpRouter(r *gin.Engine) {
-	s := handler.NewServer()
 
-	r.POST("/", s.GetMostUsedWords)
-}
