@@ -11,7 +11,7 @@ func main() {
 	if err != nil {
         panic(err)
     }
-	result := service.GetMostUsedWords(string(file))
+	result := service.GetMostUsedWords(string(file)) // returns a slice of service.Mapper
 
 	for idx, word := range result {
 		fmt.Printf("%d. %s\t%d\n", idx+1, word.Key, word.Value)
