@@ -1,6 +1,7 @@
 package handler
 
 import (
+	"github.com/Ad3bay0c/golang-testing/service"
 	"github.com/gin-gonic/gin"
 	"strings"
 )
@@ -23,7 +24,11 @@ func (s *Server) GetMostUsedWords(c *gin.Context) {
 		c.JSON(400, gin.H{"error": "text is empty"})
 		return
 	}
-	c.JSON(200, gin.H{
-		"message": text.Text,
-	})
+	result := service.GetMostUsedWords(text.Text)
+
+	c.JSON(200, result)
+}
+
+func (s * Server) SetUpRouter(r *gin.Engine) {
+	r.POST("/", s.GetMostUsedWords)
 }
