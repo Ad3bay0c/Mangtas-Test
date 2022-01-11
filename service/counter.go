@@ -7,8 +7,8 @@ import (
 )
 
 type Mapper struct {
-	Key 	string	`json:"word"`
-	Value 	int	    `json:"No_of_appearance"`
+	Key   string `json:"word"`
+	Value int    `json:"No_of_appearance"`
 }
 
 // GetMostUsedWords function to map the words to the number of appearance and returns 10 most used words
@@ -27,7 +27,7 @@ func GetMostUsedWords(text string) []Mapper {
 	// append the result to the mapper slice
 	for key, val := range m {
 		mapper = append(mapper, Mapper{Key: key, Value: val})
-    }
+	}
 
 	// sorts the mapper value in descending order (i.e. from highest to lowest)
 	sort.SliceStable(mapper, func(i, j int) bool {

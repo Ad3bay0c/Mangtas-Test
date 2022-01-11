@@ -29,6 +29,6 @@ func (s *Server) GetMostUsedWords(c *gin.Context) {
 	c.JSON(200, result)
 }
 
-func (s * Server) SetUpRouter(r *gin.Engine) {
+func (s *Server) SetUpRouter(r *gin.Engine) {
 	r.POST("/", s.GetMostUsedWords)
 }

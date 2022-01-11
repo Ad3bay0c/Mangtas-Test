@@ -9,8 +9,8 @@ import (
 func main() {
 	file, err := ioutil.ReadFile("words.txt")
 	if err != nil {
-        panic(err)
-    }
+		panic(err)
+	}
 	result := service.GetMostUsedWords(string(file)) // returns a slice of service.Mapper
 
 	for idx, word := range result {

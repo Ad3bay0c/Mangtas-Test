@@ -21,5 +21,3 @@ func main() {
 	log.Printf("Server started at http://localhost%v", PORT)
 	log.Fatal(server.ListenAndServe())
 }
-
-

@@ -11,10 +11,11 @@ import (
 	"strings"
 	"testing"
 )
+
 var router *gin.Engine
 
 func TestMain(m *testing.M) {
-    gin.SetMode(gin.TestMode)
+	gin.SetMode(gin.TestMode)
 	router = gin.Default()
 	s := NewServer()
 	s.SetUpRouter(router)
@@ -47,29 +48,29 @@ func TestApplicationHandler_GetMostUSedWords(t *testing.T) {
 		assert.Contains(t, response.Body.String(), "text is empty")
 	})
 
-	tt := []struct{
+	tt := []struct {
 		title string
 		input *struct {
-            Text string `json:"text"`
-        }
+			Text string `json:"text"`
+		}
 		expected string
 	}{
 		{
 			title: "Test for the highest occurring word",
 			input: &struct {
-                Text string `json:"text"`
-            }{
-                Text: "The quick brown fox jumps over the lazy dog",
-            },
+				Text string `json:"text"`
+			}{
+				Text: "The quick brown fox jumps over the lazy dog",
+			},
 			expected: "{\"word\":\"the\",\"No_of_appearance\":2}",
 		},
 		{
 			title: "Test for the second highest occurring word",
 			input: &struct {
-                Text string `json:"text"`
-            }{
-                Text: "The quick brown fox jumps over the lazy dog and the dog cried",
-            },
+				Text string `json:"text"`
+			}{
+				Text: "The quick brown fox jumps over the lazy dog and the dog cried",
+			},
 			expected: "{\"word\":\"dog\",\"No_of_appearance\":2}",
 		},
 	}
@@ -91,13 +92,13 @@ func TestApplicationHandler_GetMostUSedWords(t *testing.T) {
 }
 
 func TestApplicationService_GetMostUsedWords(t *testing.T) {
-	tt := []struct{
+	tt := []struct {
 		title string
 		input *struct {
 			Text string `json:"text"`
 		}
 		expected int
-		word string
+		word     string
 	}{
 		{
 			title: "Test for the highest occurring word",
@@ -107,7 +108,7 @@ func TestApplicationService_GetMostUsedWords(t *testing.T) {
 				Text: "The quick brown fox jumps over the lazy dog and the dog cried",
 			},
 			expected: 3,
-			word: "the",
+			word:     "the",
 		},
 		{
 			title: "Test for the highest occurring word",
@@ -117,7 +118,7 @@ func TestApplicationService_GetMostUsedWords(t *testing.T) {
 				Text: "The quick brown fox jumps over the lazy dog and the dog cried dog do dog",
 			},
 			expected: 4,
-			word: "dog",
+			word:     "dog",
 		},
 	}
 
